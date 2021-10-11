@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>局域網硬盤 - 通過瀏覽器共享文件</title>
+    <script src="js/jQuery3.min.js"></script>
+    <script src="js/axios.min.js"></script>
 </head>
 <body>
 <div></div>
+<div>----------------------------------------------</div>
 <div>
     <form action="" method="post" enctype="multipart/form-data">
-    <input type="file" name="upfile" ><br>
-    <input type="button" value="上傳">
-</form>
+        <input type="file" name="upfile"><br>
+        <input type="button" value="上傳">
+    </form>
 </div>
 <div>版權所有 © yaoji.moe</div>
 <script>
     $("input:last").click(function () {
         let data = new FormData($("form")[0]);
-        axios.post("/up",data).then(function (response) {
-
+        axios.post("/up", data).then(function (response) {
+            if (response.data == 0) {
+                alert("成功")
+            } else {
+                alert("失敗")
+            }
         }).catch(function (err) {
             alert(err);
         })

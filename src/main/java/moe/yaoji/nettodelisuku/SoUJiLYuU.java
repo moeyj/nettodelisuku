@@ -11,7 +11,7 @@ import java.io.IOException;
 @Controller
 public class SoUJiLYuU {
     @PostMapping("/up")
-    public void f1(MultipartFile upfile){
+    public Integer f1(MultipartFile upfile){
         String originalFilename = upfile.getOriginalFilename();
         File file = new File("D:/data/");
         if (!file.exists()){
@@ -21,6 +21,8 @@ public class SoUJiLYuU {
             upfile.transferTo(new File(file+originalFilename));
         } catch (IOException e) {
             e.printStackTrace();
+            return 1;
         }
+        return 0;
     }
 }
