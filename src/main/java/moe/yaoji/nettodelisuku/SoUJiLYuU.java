@@ -18,6 +18,7 @@ public class SoUJiLYuU {
     @ResponseBody
     public int f1(MultipartFile upfile) {
         String originalFilename = upfile.getOriginalFilename();
+        if (originalFilename!=null&&originalFilename.length()>0){
         File file = new File(s);
         if (!file.exists()) {
             file.mkdirs();//如果文件夹不存在则创建
@@ -28,5 +29,7 @@ public class SoUJiLYuU {
             e.printStackTrace();
         }
         return 0;
+        }
+        return 1;
     }
 }
