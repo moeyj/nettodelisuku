@@ -23,7 +23,7 @@ public class SoUJiLYuU {
         if (originalFilename!=null&&originalFilename.length()>0){
         File file = new File(s);
         if (!file.exists()) {
-            file.mkdirs();//如果文件夹不存在则创建
+            file.mkdirs();
         }
         try {
             upfile.transferTo(new File(s + originalFilename));
