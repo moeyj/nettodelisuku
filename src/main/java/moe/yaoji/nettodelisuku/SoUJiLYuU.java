@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -31,5 +33,17 @@ public class SoUJiLYuU {
         return 0;
         }
         return 1;
+    }
+    @PostMapping("/filelist")
+    @ResponseBody
+    public List<String> f2(){
+        File file = new File(s);
+        String[] list = file.list();
+        List<String> strings = new ArrayList<>();
+        for (String s1 : list) {
+            if (new File(s+s1).isFile())
+                strings.add(s1);
+        }
+        return strings;
     }
 }

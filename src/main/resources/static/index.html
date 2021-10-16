@@ -5,17 +5,41 @@
     <title>局域網硬盤 - 通過瀏覽器共享文件</title>
     <script src="js/jQuery3.min.js"></script>
     <script src="js/axios.min.js"></script>
+    <script src="js/vue2.js"></script>
 </head>
 <body>
-<div></div>
-<div>----------------------------------------------</div>
+<div id="i2">
+    <table>
+        <tr>
+            <th>文件下載</th>
+        </tr>
+        <tr v-for="v1 in d1">
+            <td><a :href="'/'+v1" v-text="v1"></a></td>
+        </tr>
+    </table>
+</div>
+<div>----------------------------------------------</div><br>
+<div><b>上傳文件</b></div><br>
 <div>
     <form action="" method="post" enctype="multipart/form-data">
         <input type="file" name="upfile" id="i1"><br>
         <input type="button" value="上傳">
     </form>
-</div>
+</div><br>
 <div>版權所有 © yaoji.moe</div>
+<script>
+    let l1 = new Vue({
+        el: "#i2",
+        data: {
+            d1: []
+        },
+        created: function () {
+            axios.post("/filelist").then(function (c1) {
+                l1.d1 = c1.data
+            })
+        }
+    })
+</script>
 <script>
     $("input:last").click(function () {
         let data = new FormData($("form")[0]);
